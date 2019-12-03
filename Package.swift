@@ -13,14 +13,9 @@ let package = Package(
             name: "SwiftUIRemoteImage",
             targets: ["SwiftUIRemoteImage"]),
     ],
-    dependencies: [
-    ],
     targets: [
         .target(
             name: "SwiftUIRemoteImage",
-            dependencies: []),
-        .testTarget(
-            name: "SwiftUIRemoteImageTests",
-            dependencies: ["SwiftUIRemoteImage"]),
+            dependencies: [])
     ]
 )
