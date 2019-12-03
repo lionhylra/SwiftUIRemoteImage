@@ -1,2 +1,3 @@
 # SwiftUIRemoteImage
-A light implementation to load images from server.
+
+A description of this package.
