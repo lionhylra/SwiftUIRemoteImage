@@ -37,6 +37,9 @@ public struct RemoteImage<Content: View>: View {
 
     public var body: some View {
         content(remoteImageProvider.image, remoteImageProvider.userInfo)
+            .onDisappear {
+                self.remoteImageProvider.cancelLoadingImage()
+        }
     }
 }
 
@@ -45,12 +48,23 @@ extension RemoteImage {
 
         @Published fileprivate var image: PlatformImage?
         @Published fileprivate var userInfo: [RemoteImageUserInfoKey: Any]?
+        private let remoteImageLoader: RemoteImageLoader
+        private let url: URL?
 
         fileprivate init(url: URL?, remoteImageLoader: RemoteImageLoader) {
+            self.url = url
+            self.remoteImageLoader = remoteImageLoader
             remoteImageLoader.loadImage(url: url) { (image, userInfo)  in
                 self.image = image
                 self.userInfo = userInfo
             }
+        }
+
+        fileprivate func cancelLoadingImage() {
+            guard let url = url else {
+                return
+            }
+            remoteImageLoader.cancelLoadingImage(url: url)
         }
     }
 }

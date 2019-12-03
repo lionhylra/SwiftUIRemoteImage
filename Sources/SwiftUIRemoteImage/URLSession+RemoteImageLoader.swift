@@ -18,6 +18,7 @@ public final class URLSessionImageLoader: RemoteImageLoader {
     public static let shared = URLSessionImageLoader()
 
     private let urlSession: URLSession
+    private var tasks: [URL: URLSessionTask] = [:]
 
     public init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
@@ -28,7 +29,7 @@ public final class URLSessionImageLoader: RemoteImageLoader {
             completionHandler(nil, nil)
             return
         }
-        urlSession.dataTask(with: url) { (data, _, _) in
+        let task = urlSession.dataTask(with: url) { (data, _, _) in
             DispatchQueue.main.async {
                 if let data = data, let image = PlatformImage(data: data) {
                     completionHandler(image, nil)
@@ -36,7 +37,13 @@ public final class URLSessionImageLoader: RemoteImageLoader {
                     completionHandler(nil, nil)
                 }
             }
-        }.resume()
+        }
+        task.resume()
+        tasks[url] = task
+    }
+
+    public func cancelLoadingImage(url: URL) {
+        tasks[url]?.cancel()
     }
 }
 
