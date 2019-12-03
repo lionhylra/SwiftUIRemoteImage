@@ -1,8 +1,9 @@
 //
-//  File.swift
-//  
+//  CrossPlatform.swift
+//  SwiftUIRemoteImage
 //
 //  Created by Yilei He on 4/12/19.
+//  Copyright © 2019 Yilei He. All rights reserved.
 //
 
 #if os(macOS)

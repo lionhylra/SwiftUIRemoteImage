@@ -1,8 +1,9 @@
 //
-//  File.swift
-//  
+//  RemoteImageLoader.swift
+//  SwiftUIRemoteImage
 //
 //  Created by Yilei He on 4/12/19.
+//  Copyright © 2019 Yilei He. All rights reserved.
 //
 
 import Foundation
