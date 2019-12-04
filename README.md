@@ -101,4 +101,76 @@ public final class URLSessionImageLoader: RemoteImageLoader {
 
 Then when you initialise `RemoteImage`, pass your class in the initialiser.
 
+```swift
+RemoteImage(url: url, remoteImageLoader: URLSessionImageLoader.shared) { image in
+    
+}
+```
 
+#### Use with SDWebImage
+
+Create a file *SwiftUIRemoteImage+SDWebImage.swift* in your project:
+
+```swift
+// SwiftUIRemoteImage+SDWebImage.swift
+
+import SwiftUIRemoteImage
+import SDWebImage
+
+extension RemoteImageUserInfoKey {
+    static let progress: RemoteImageUserInfoKey = "progress"
+    static let cacheType: RemoteImageUserInfoKey = "cacheType"
+    static let error: RemoteImageUserInfoKey = "error"
+}
+
+class SDWebImageLoader: RemoteImageLoader {
+    static let shared = SDWebImageLoader()
+    private let manager: SDWebImageManager
+    private var tasks: [URL: SDWebImageOperation] = [:]
+
+    init(manager: SDWebImageManager = .shared) {
+        self.manager = manager
+    }
+
+    public func loadImage(url: URL?, completionHandler: @escaping (PlatformImage?, [RemoteImageUserInfoKey : Any]?) -> Void) {
+        guard let url = url else {
+            completionHandler(nil, nil)
+            return
+        }
+        tasks[url] = manager.loadImage(with: url, options: [], context: nil, progress: { (receivedSize, expectedSize, _) in
+            let progress: CGFloat
+            if (expectedSize > 0) {
+                progress = CGFloat(receivedSize) / CGFloat(expectedSize)
+            } else {
+                progress = 0
+            }
+            DispatchQueue.main.async {
+                completionHandler(nil, [.progress: progress])
+            }
+        }) { (image, data, error, cacheType, finished, _) in
+            let progress: CGFloat = image == nil ? 0 : 1
+            completionHandler(image, [.error: error as Any, .cacheType: cacheType, .progress: progress])
+        }
+    }
+
+    public func cancelLoadingImage(url: URL) {
+        tasks[url]?.cancel()
+    }
+}
+
+extension RemoteImage {
+    init(url: URL?, content: @escaping (PlatformImage?, [RemoteImageUserInfoKey: Any]?) -> Content) {
+        self.init(url: url, remoteImageLoader: SDWebImageLoader.shared, content: content)
+    }
+}
+```
+
+Then you can use it as usual and take advantage from library:
+
+```swift
+    var body: some View {
+        RemoteImage(url: url) { image in
+            Image(uiImage: image ?? UIImage())    
+        }
+    }
+```
