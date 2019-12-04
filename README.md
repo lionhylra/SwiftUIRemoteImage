@@ -57,7 +57,7 @@ let package = Package(
 
 ## Usage
 
-#### Basic
+#### Work with URLSession
 
 To use `RemoteImage`, you need to implement a class conforming to protocol `RemoteImageLoader` first. Your class is responssible to fetch an image by downloading from server or loading from cache.
 
@@ -107,7 +107,7 @@ RemoteImage(url: url, remoteImageLoader: URLSessionImageLoader.shared) { image i
 }
 ```
 
-#### Use with SDWebImage
+#### Work with SDWebImage
 
 Create a file *SwiftUIRemoteImage+SDWebImage.swift* in your project:
 
@@ -176,4 +176,47 @@ Then you can use it as usual and take advantage from library:
             }
         }
     }
+```
+
+#### Work with Kingfisher
+
+```swift
+import Kingfisher
+import SwiftUIRemoteImage
+
+class KingfisherImageLoader: RemoteImageLoader {
+    static let shared = KingfisherImageLoader()
+    private let manager: KingfisherManager
+    private var tasks: [URL: DownloadTask] = [:]
+
+    init(manager: KingfisherManager = .shared) {
+        self.manager = manager
+    }
+
+    func loadImage(url: URL?, completionHandler: @escaping (PlatformImage?, [RemoteImageUserInfoKey : Any]?) -> Void) {
+        guard let url = url else {
+            completionHandler(nil, nil)
+            return
+        }
+        tasks[url] = manager.retrieveImage(with: url, completionHandler: { (result) in
+            DispatchQueue.main.async {
+                if case .success(let value) = result {
+                    completionHandler(value.image, nil)
+                } else {
+                    completionHandler(nil, nil)
+                }
+            }
+        }) // Optionally you can implement DownloadProgressBlock parameter and other parameter to pass back more data in userInfo
+    }
+
+    func cancelLoadingImage(url: URL) {
+        tasks[url]?.cancel()
+    }
+}
+
+extension RemoteImage {
+    init(url: URL?, content: @escaping (PlatformImage?, [RemoteImageUserInfoKey: Any]?) -> Content) {
+        self.init(url: url, remoteImageLoader: KingfisherImageLoader.shared, content: content)
+    }
+}
 ```
