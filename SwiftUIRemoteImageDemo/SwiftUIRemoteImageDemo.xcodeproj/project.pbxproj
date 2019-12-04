@@ -13,7 +13,7 @@
 		BEB5E476239721AE008DE2EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEB5E475239721AE008DE2EB /* Assets.xcassets */; };
 		BEB5E479239721AE008DE2EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEB5E478239721AE008DE2EB /* Preview Assets.xcassets */; };
 		BEB5E47C239721AE008DE2EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEB5E47A239721AE008DE2EB /* LaunchScreen.storyboard */; };
-		BEB5E48A239722ED008DE2EB /* URLSession+RemoteImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5E486239722ED008DE2EB /* URLSession+RemoteImageLoader.swift */; };
+		BEB5E48A239722ED008DE2EB /* URLSessionImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5E486239722ED008DE2EB /* URLSessionImageLoader.swift */; };
 		BEB5E48B239722ED008DE2EB /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5E487239722ED008DE2EB /* RemoteImage.swift */; };
 		BEB5E48C239722ED008DE2EB /* RemoteImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5E488239722ED008DE2EB /* RemoteImageLoader.swift */; };
 		BEB5E48D239722ED008DE2EB /* CrossPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5E489239722ED008DE2EB /* CrossPlatform.swift */; };
@@ -28,7 +28,7 @@
 		BEB5E478239721AE008DE2EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BEB5E47B239721AE008DE2EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BEB5E47D239721AE008DE2EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BEB5E486239722ED008DE2EB /* URLSession+RemoteImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+RemoteImageLoader.swift"; sourceTree = "<group>"; };
+		BEB5E486239722ED008DE2EB /* URLSessionImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionImageLoader.swift; sourceTree = "<group>"; };
 		BEB5E487239722ED008DE2EB /* RemoteImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 		BEB5E488239722ED008DE2EB /* RemoteImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageLoader.swift; sourceTree = "<group>"; };
 		BEB5E489239722ED008DE2EB /* CrossPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossPlatform.swift; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		BEB5E485239722ED008DE2EB /* SwiftUIRemoteImage */ = {
 			isa = PBXGroup;
 			children = (
-				BEB5E486239722ED008DE2EB /* URLSession+RemoteImageLoader.swift */,
+				BEB5E486239722ED008DE2EB /* URLSessionImageLoader.swift */,
 				BEB5E487239722ED008DE2EB /* RemoteImage.swift */,
 				BEB5E488239722ED008DE2EB /* RemoteImageLoader.swift */,
 				BEB5E489239722ED008DE2EB /* CrossPlatform.swift */,
@@ -178,7 +178,7 @@
 				BEB5E48D239722ED008DE2EB /* CrossPlatform.swift in Sources */,
 				BEB5E48C239722ED008DE2EB /* RemoteImageLoader.swift in Sources */,
 				BEB5E470239721AC008DE2EB /* AppDelegate.swift in Sources */,
-				BEB5E48A239722ED008DE2EB /* URLSession+RemoteImageLoader.swift in Sources */,
+				BEB5E48A239722ED008DE2EB /* URLSessionImageLoader.swift in Sources */,
 				BEB5E472239721AC008DE2EB /* SceneDelegate.swift in Sources */,
 				BEB5E48B239722ED008DE2EB /* RemoteImage.swift in Sources */,
 				BEB5E474239721AC008DE2EB /* ContentView.swift in Sources */,
