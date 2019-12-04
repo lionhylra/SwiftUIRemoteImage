@@ -169,8 +169,11 @@ Then you can use it as usual and take advantage from library:
 
 ```swift
     var body: some View {
-        RemoteImage(url: url) { image in
-            Image(uiImage: image ?? UIImage())    
+        RemoteImage(url: url) { image, userInfo in
+            VStack {
+                Image(uiImage: image ?? UIImage())
+                ProgressView(progress: userInfo[.progress] as! CGFloat)
+            }
         }
     }
 ```
