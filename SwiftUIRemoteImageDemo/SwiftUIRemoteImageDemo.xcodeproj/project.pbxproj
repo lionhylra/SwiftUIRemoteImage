@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,10 @@
 		BEB5E48B239722ED008DE2EB /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5E487239722ED008DE2EB /* RemoteImage.swift */; };
 		BEB5E48C239722ED008DE2EB /* RemoteImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5E488239722ED008DE2EB /* RemoteImageLoader.swift */; };
 		BEB5E48D239722ED008DE2EB /* CrossPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5E489239722ED008DE2EB /* CrossPlatform.swift */; };
+		BEB5E48F23979A14008DE2EB /* RemoteImage+WDWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5E48E23979A14008DE2EB /* RemoteImage+WDWebImage.swift */; };
+		BEB5E49223979A57008DE2EB /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = BEB5E49123979A57008DE2EB /* SDWebImage */; };
+		BEB5E4952397BE69008DE2EB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BEB5E4942397BE69008DE2EB /* Kingfisher */; };
+		BEB5E4972397BE88008DE2EB /* RemoteImage+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5E4962397BE88008DE2EB /* RemoteImage+Kingfisher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,8 @@
 		BEB5E487239722ED008DE2EB /* RemoteImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 		BEB5E488239722ED008DE2EB /* RemoteImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageLoader.swift; sourceTree = "<group>"; };
 		BEB5E489239722ED008DE2EB /* CrossPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossPlatform.swift; sourceTree = "<group>"; };
+		BEB5E48E23979A14008DE2EB /* RemoteImage+WDWebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteImage+WDWebImage.swift"; sourceTree = "<group>"; };
+		BEB5E4962397BE88008DE2EB /* RemoteImage+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteImage+Kingfisher.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEB5E4952397BE69008DE2EB /* Kingfisher in Frameworks */,
+				BEB5E49223979A57008DE2EB /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +75,8 @@
 				BEB5E46F239721AC008DE2EB /* AppDelegate.swift */,
 				BEB5E471239721AC008DE2EB /* SceneDelegate.swift */,
 				BEB5E473239721AC008DE2EB /* ContentView.swift */,
+				BEB5E48E23979A14008DE2EB /* RemoteImage+WDWebImage.swift */,
+				BEB5E4962397BE88008DE2EB /* RemoteImage+Kingfisher.swift */,
 				BEB5E475239721AE008DE2EB /* Assets.xcassets */,
 				BEB5E47A239721AE008DE2EB /* LaunchScreen.storyboard */,
 				BEB5E47D239721AE008DE2EB /* Info.plist */,
@@ -120,6 +130,10 @@
 			dependencies = (
 			);
 			name = SwiftUIRemoteImageDemo;
+			packageProductDependencies = (
+				BEB5E49123979A57008DE2EB /* SDWebImage */,
+				BEB5E4942397BE69008DE2EB /* Kingfisher */,
+			);
 			productName = SwiftUIRemoteImageDemo;
 			productReference = BEB5E46C239721AC008DE2EB /* SwiftUIRemoteImageDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -148,6 +162,10 @@
 				Base,
 			);
 			mainGroup = BEB5E463239721AC008DE2EB;
+			packageReferences = (
+				BEB5E49023979A57008DE2EB /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				BEB5E4932397BE69008DE2EB /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = BEB5E46D239721AC008DE2EB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -180,6 +198,8 @@
 				BEB5E470239721AC008DE2EB /* AppDelegate.swift in Sources */,
 				BEB5E48A239722ED008DE2EB /* URLSessionImageLoader.swift in Sources */,
 				BEB5E472239721AC008DE2EB /* SceneDelegate.swift in Sources */,
+				BEB5E4972397BE88008DE2EB /* RemoteImage+Kingfisher.swift in Sources */,
+				BEB5E48F23979A14008DE2EB /* RemoteImage+WDWebImage.swift in Sources */,
 				BEB5E48B239722ED008DE2EB /* RemoteImage.swift in Sources */,
 				BEB5E474239721AC008DE2EB /* ContentView.swift in Sources */,
 			);
@@ -375,6 +395,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BEB5E49023979A57008DE2EB /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.3;
+			};
+		};
+		BEB5E4932397BE69008DE2EB /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BEB5E49123979A57008DE2EB /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEB5E49023979A57008DE2EB /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		BEB5E4942397BE69008DE2EB /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEB5E4932397BE69008DE2EB /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BEB5E464239721AC008DE2EB /* Project object */;
 }
