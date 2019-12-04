@@ -14,7 +14,7 @@ SwiftUIRemoteImage is a light implementation that allows you to load an image (U
     }
 ```
 
-With a `convenient init` implemented in RemoteImage extension by yourself, using it can be even simpler.
+With a convenient `init` implemented(See *Work with SDWebImage* section below) in RemoteImage extension by yourself, using it can be even simpler.
 
 ```swift
     var body: some View {
